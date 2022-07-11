@@ -14,6 +14,8 @@
 		1A0A76C7287AE69300CC3E32 /* ArtBookApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1A0A76C5287AE69300CC3E32 /* ArtBookApp.xcdatamodeld */; };
 		1A0A76C9287AE69500CC3E32 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A0A76C8287AE69500CC3E32 /* Assets.xcassets */; };
 		1A0A76CC287AE69500CC3E32 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A0A76CA287AE69500CC3E32 /* LaunchScreen.storyboard */; };
+		1A0A76D4287AFCC200CC3E32 /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0A76D3287AFCC200CC3E32 /* DetailVC.swift */; };
+		1A0A76D6287B3F2B00CC3E32 /* select.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A0A76D5287B3F2A00CC3E32 /* select.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		1A0A76C8287AE69500CC3E32 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1A0A76CB287AE69500CC3E32 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1A0A76CD287AE69500CC3E32 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1A0A76D3287AFCC200CC3E32 /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
+		1A0A76D5287B3F2A00CC3E32 /* select.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = select.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,8 +65,10 @@
 				1A0A76BC287AE69300CC3E32 /* AppDelegate.swift */,
 				1A0A76BE287AE69300CC3E32 /* SceneDelegate.swift */,
 				1A0A76C0287AE69300CC3E32 /* ViewController.swift */,
+				1A0A76D3287AFCC200CC3E32 /* DetailVC.swift */,
 				1A0A76C2287AE69300CC3E32 /* Main.storyboard */,
 				1A0A76C8287AE69500CC3E32 /* Assets.xcassets */,
+				1A0A76D5287B3F2A00CC3E32 /* select.png */,
 				1A0A76CA287AE69500CC3E32 /* LaunchScreen.storyboard */,
 				1A0A76CD287AE69500CC3E32 /* Info.plist */,
 				1A0A76C5287AE69300CC3E32 /* ArtBookApp.xcdatamodeld */,
@@ -129,6 +135,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A0A76CC287AE69500CC3E32 /* LaunchScreen.storyboard in Resources */,
+				1A0A76D6287B3F2B00CC3E32 /* select.png in Resources */,
 				1A0A76C9287AE69500CC3E32 /* Assets.xcassets in Resources */,
 				1A0A76C4287AE69300CC3E32 /* Main.storyboard in Resources */,
 			);
@@ -141,6 +148,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A0A76D4287AFCC200CC3E32 /* DetailVC.swift in Sources */,
 				1A0A76C1287AE69300CC3E32 /* ViewController.swift in Sources */,
 				1A0A76BD287AE69300CC3E32 /* AppDelegate.swift in Sources */,
 				1A0A76C7287AE69300CC3E32 /* ArtBookApp.xcdatamodeld in Sources */,
