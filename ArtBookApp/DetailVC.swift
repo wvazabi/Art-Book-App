@@ -19,11 +19,24 @@ class DetailVC: UIViewController, UIImagePickerControllerDelegate & UINavigation
     @IBOutlet weak var artistTF: UITextField!
     @IBOutlet weak var yearTF: UITextField!
     
+    var choosenPainting : String = ""
+    var choosenPaintingId : UUID?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        if choosenPainting != ""{
+            
+        }
+        else{
+            nameTF.text = ""
+            artistTF.text = ""
+            yearTF.text = ""
+        }
+        
+        
         
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         view.addGestureRecognizer(gestureRecognizer)
@@ -60,6 +73,8 @@ class DetailVC: UIViewController, UIImagePickerControllerDelegate & UINavigation
     
     
     @IBAction func saveButton(_ sender: Any) {
+        
+     
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let contex = appDelegate.persistentContainer.viewContext
