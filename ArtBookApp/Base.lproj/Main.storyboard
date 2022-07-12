@@ -113,6 +113,7 @@
                         <outlet property="artistTF" destination="BOB-pX-n2m" id="btV-Ne-Lga"/>
                         <outlet property="imageView" destination="ar1-UM-oJB" id="usc-Eg-Qkg"/>
                         <outlet property="nameTF" destination="3vi-7t-U2L" id="544-df-fBp"/>
+                        <outlet property="saveButton" destination="Lqh-Of-O6b" id="sHd-05-MvM"/>
                         <outlet property="yearTF" destination="avS-Jt-l2q" id="UJG-PG-vC6"/>
                     </connections>
                 </viewController>
