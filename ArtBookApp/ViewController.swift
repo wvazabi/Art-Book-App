@@ -24,9 +24,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.delegate = self
         tableView.dataSource = self
         
-        navigationController?.navigationBar.topItem?.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(addButton))
+        
         
         getData()
+        
+        navigationController?.navigationBar.topItem?.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(addButton))
         
     }
     
@@ -36,7 +38,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     @objc func getData(){
-       name.removeAll(keepingCapacity: false)
+        name.removeAll(keepingCapacity: false)
         id.removeAll(keepingCapacity: false)
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -48,7 +50,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         do{
             let results = try context.fetch(fetchRequest)
             
-            for result in results as! [NSManagedObject]{
+            if results.count >  0 {
+                for result in results as! [NSManagedObject]{
                 if let name = result.value(forKey: "name") as? String{
                     self.name.append(name)
                 }
@@ -57,6 +60,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 }
                 
                 self.tableView.reloadData()
+            }
             }
         }catch{
             print("error")
@@ -82,6 +86,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
 
     @objc func addButton(){
+        selectingPaintingName = ""
         performSegue(withIdentifier: "toDetailVC", sender: nil)
     }
     

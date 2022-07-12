@@ -9,26 +9,56 @@ import UIKit
 import CoreData
 
 class DetailVC: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
-
-    @IBOutlet weak var nameLabel: UILabel!
+    
+    
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var yearLabel: UILabel!
-    @IBOutlet weak var artistLabel: UILabel!
     
     @IBOutlet weak var nameTF: UITextField!
     @IBOutlet weak var artistTF: UITextField!
     @IBOutlet weak var yearTF: UITextField!
     
-    var choosenPainting : String = ""
+    var choosenPainting = ""
     var choosenPaintingId : UUID?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         if choosenPainting != ""{
             
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let context     = appDelegate.persistentContainer.viewContext
+            let fetchrequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Paintings")
+            let idString = choosenPaintingId?.uuidString
+            fetchrequest.predicate = NSPredicate(format: "id = %@", idString!)
+            fetchrequest.returnsObjectsAsFaults = false
+            
+            do{
+                let results = try context.fetch(fetchrequest)
+                if results.count > 0 {
+                    for result in results as! [NSManagedObject]{
+                        
+                        if let name = result.value(forKey: "name") as? String{
+                            nameTF.text = name
+                        }
+                        if let artist = result.value(forKey: "artist") as? String{
+                            artistTF.text = artist
+                        }
+                        if let year = result.value(forKey: "year") as? Int{
+                            yearTF.text = String(year)
+                        }
+                        if let imageData = result.value(forKey: "image") as? Data{
+                            let image = UIImage(data: imageData)
+                            imageView.image = image
+                        }
+                        
+                        
+                    }
+                }
+            }catch{
+                print("fail")
+            }
         }
         else{
             nameTF.text = ""
@@ -74,7 +104,7 @@ class DetailVC: UIViewController, UIImagePickerControllerDelegate & UINavigation
     
     @IBAction func saveButton(_ sender: Any) {
         
-     
+        
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let contex = appDelegate.persistentContainer.viewContext
@@ -111,15 +141,15 @@ class DetailVC: UIViewController, UIImagePickerControllerDelegate & UINavigation
         
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
