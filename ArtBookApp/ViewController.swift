@@ -104,6 +104,51 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         performSegue(withIdentifier: "toDetailVC", sender: nil)
     }
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+            return true
+        }
+
+        func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+            if (editingStyle == .delete) {
+                
+                
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                let context     = appDelegate.persistentContainer.viewContext
+                let fetchrequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Paintings")
+                let idString = self.id[indexPath.row].uuidString
+                fetchrequest.predicate = NSPredicate(format: "id = %@", idString)
+                fetchrequest.returnsObjectsAsFaults = false
+                
+                do{
+                    let results = try context.fetch(fetchrequest)
+                    if results.count > 0 {
+                        for result in results as! [NSManagedObject]{
+                            
+                            if let id = result.value(forKey: "id") as? UUID{
+                                if id == self.id[indexPath.row]{
+                                    context.delete(result)
+                                    
+                                    self.name.remove(at: indexPath.row)
+                                    self.id.remove(at: indexPath.row)
+                                    
+                                    tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.fade)
+                                    
+                                }
+                            }
+                            }
+                        
+                    }
+                    
+                }catch{
+                    print("fail")
+                }
+                
+                
+                
+                
+               
+            }
+        }
     
 }
 
